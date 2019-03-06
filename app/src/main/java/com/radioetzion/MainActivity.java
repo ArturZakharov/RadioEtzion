@@ -21,7 +21,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    //Temp boolean for cheaking work of license
+    //Temp boolean for cheaking work of license(Terms of use)
     // TODO: make it with shared preferences
     Boolean licenseAgrement = false;
 
@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+    //What happens when back pressed, if drawer open it close it if  else go to super
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -97,8 +98,12 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-
+    //The terms of use for user
+    //if the license was agree its will not appear
+    //if not, its show alert dialog_layout with terms of use
+    // if the user disagree he will not enter the app
     private void licenseDialog(){
+        //TODO: licenseAgrement from shared preferences
         if(!licenseAgrement){
             LayoutInflater inflater = getLayoutInflater();
             View licenseDialogView = inflater.inflate(R.layout.license_alertdialog_layout, null, false);
